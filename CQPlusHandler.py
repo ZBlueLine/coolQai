@@ -5,20 +5,14 @@ import random
 
 def strpp(len1,len2, s1, s2):
     flag = 0
-    for i in range(len1):
-        ti = i
+    for i in range(len1-len2+1):
         if flag == 1:
             break
         for j in range(len2):
-            if s1[ti] != s2[j]:
+            if s1[i + j] != s2[j]:
                 break
-            else:
-                ti += 1
             if j == len2-1:
                 flag = 1
-                break
-            if i == len1:
-                break
     if flag == 1:
         return True
     else:
@@ -28,6 +22,7 @@ def strdel(len1,len2, s1, s2):
     flag = 0
     ans = ''
     i = 0
+    ti = 0
     while i < len1:
         if flag == 1:
             i = ti
@@ -55,10 +50,12 @@ class cntans:
     def Fdans(self, aimstr):
         Maxnum = 0.6
         ans = list()
+        allans = list()
         for line in open("ans.txt"):
             nownum = 0
             tstr = line.strip('\n')
             tstr = tstr.split('-')
+            allans.append(tstr[1])
             length = len(tstr[0])
             length2 = len(aimstr)
             # cnlength = (len(tstr[0].encode())-len(tstr[0]))//2
@@ -85,7 +82,7 @@ class cntans:
         if len(ans):
             return random.choice(ans)
         else:
-            return ''
+            return random.choice(allans)
 
     def judge(self):
          with open("ans.txt", 'rb') as f:  # 打开文件
@@ -110,7 +107,10 @@ class cntans:
 
 class MainHandler(cqplus.CQPlusHandler):
     def handle_event(self, event, params):
-        if event == "on_group_msg" and (params['from_group'] == 759632530 or params['from_group'] == 112731254): # and (params['from_group'] == 112731254 or params['from_group'] == 759632530): # 759632530
+        # dota群：473911475
+        # 朱群： 759632530
+        # 测试群 112731254
+        if event == "on_group_msg" and (params['from_group'] == 759632530 or params['from_group'] == 112731254): # or params['from_group'] == 473911475): # and (params['from_group'] == 112731254 or params['from_group'] == 759632530): # 759632530
             a = "[CQ:at,qq=1026393085]"
             b = params['msg']
             len1 = len(a)
@@ -122,7 +122,7 @@ class MainHandler(cqplus.CQPlusHandler):
             ans = solve.Fdans(tempb)#剔除空格的句子仅用于计算回复
             if solve.judge():
                 image = "CQ:image"
-                if not strpp(len(params['msg']), 8, b, image):
+                if not strpp(len(b), 8, b, image):
                     solve.write(b, 1)
                     solve.write(ans, 2)
             else:
@@ -149,4 +149,7 @@ class MainHandler(cqplus.CQPlusHandler):
                 # self.api.send_group_msg(params['from_group'], params['msg'][i])
                 # msg = '[CQ:at,qq=' + str(params['from_qq']) + ']' + params['msg']
                 # self.api.send_group_msg(params['from_group'], msg)
+
+
+                
             """
