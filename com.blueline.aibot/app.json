@@ -1,0 +1,173 @@
+{
+    "ret": 1, // 返回码，固定为1，不要修改
+    "apiver": 9, // Api版本，固定为9，不要修改
+    "name": "Blue的人工智能", // 应用名称，请根据实际情况修改
+    "version": "1.0.1", // 应用版本，请根据实际情况修改
+    "version_id": 1, // 应用顺序版本（每次发布时至少+1），请根据实际情况修改
+    "author": "BlueLine", // 应用作者，请根据实际情况修改
+    "description": "这是一个很搞笑的人工智能", // 作品描述，请根据实际情况修改
+    "event": [
+        {
+            "id": 1003,
+            "type": 1003,
+            "name": "插件启用",
+            "priority": 20000,
+            "function": "cq_app_enable"
+        },
+        {
+            "id": 1004,
+            "type": 1004,
+            "name": "插件停用",
+            "priority": 20000,
+            "function": "cq_app_disable"
+        },
+        {
+            "id": 1001,
+            "type": 1001,
+            "name": "酷Q启动",
+            "priority": 20000,
+            "function": "cq_coolq_start"
+        },
+        {
+            "id": 1002,
+            "type": 1002,
+            "name": "酷Q退出",
+            "priority": 20000,
+            "function": "cq_coolq_exit"
+        },
+        {
+            "id": 1,
+            "type": 21,
+            "name": "私聊消息",
+            "function": "cq_event_private_msg",
+            "priority": 20000
+        },
+        {
+            "id": 2,
+            "type": 2,
+            "name": "群消息",
+            "function": "cq_event_group_msg",
+            "priority": 20000
+        },
+        {
+            "id": 3,
+            "type": 4,
+            "name": "讨论组消息",
+            "function": "cq_event_discuss_msg",
+            "priority": 20000
+        },
+        {
+            "id": 4,
+            "type": 11,
+            "name": "群文件上传",
+            "function": "cq_event_group_upload",
+            "priority": 20000
+        },
+        {
+            "id": 5,
+            "type": 101,
+            "name": "群管理员变动",
+            "function": "cq_event_group_admin",
+            "priority": 20000
+        },
+        {
+            "id": 6,
+            "type": 102,
+            "name": "群成员减少",
+            "function": "cq_event_group_member_decrease",
+            "priority": 20000
+        },
+        {
+            "id": 7,
+            "type": 103,
+            "name": "群成员增加",
+            "function": "cq_event_group_member_increase",
+            "priority": 20000
+        },
+        {
+            "id": 10,
+            "type": 201,
+            "name": "好友添加",
+            "function": "cq_event_friend_add",
+            "priority": 20000
+        },
+        {
+            "id": 8,
+            "type": 301,
+            "name": "加好友请求",
+            "function": "cq_event_add_friend_request",
+            "priority": 20000
+        },
+        {
+            "id": 9,
+            "type": 302,
+            "name": "加群请求／邀请",
+            "function": "cq_event_add_group_request",
+            "priority": 20000
+        }
+    ],
+    "menu": [
+        {
+            "name": "菜单01",
+            "function": "menu01"
+        },
+        {
+            "name": "菜单02",
+            "function": "menu02"
+        },
+        {
+            "name": "菜单03",
+            "function": "menu03"
+        },
+        {
+            "name": "菜单04",
+            "function": "menu04"
+        },
+        {
+            "name": "菜单05",
+            "function": "menu05"
+        },
+        {
+            "name": "菜单06",
+            "function": "menu06"
+        },
+        {
+            "name": "菜单07",
+            "function": "menu07"
+        },
+        {
+            "name": "菜单08",
+            "function": "menu08"
+        },
+        {
+            "name": "菜单09",
+            "function": "menu09"
+        }
+    ],
+    "status": [],
+    "auth": [
+        // 20, // getCookies / getCsrfToken
+        // 30, // getRecord
+        101, // sendGroupMsg
+        103, // sendDiscussMsg
+        106, // sendPrivateMsg
+        // 110, // sendLikeV2 / sendLike
+        // 120, // setGroupKick
+        // 121, // setGroupBan
+        // 122, // setGroupAdmin
+        // 123, // setGroupWholeBan
+        // 124, // setGroupAnonymousBan
+        // 125, // setGroupAnonymous
+        // 126, // setGroupCard
+        // 127, // setGroupLeave
+        // 128, // setGroupSpecialTitle
+        130, // getGroupMemberInfoV2 / getGroupMemberInfo
+        131, // getStrangerInfo
+        // 140, // setDiscussLeave
+        // 150, // setFriendAddRequest
+        // 151, // setGroupAddRequest
+        160, // getGroupMemberList
+        161, // getGroupList
+        180 // deleteMsg
+    ]
+}
