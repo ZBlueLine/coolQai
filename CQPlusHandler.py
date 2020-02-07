@@ -53,17 +53,20 @@ def strdel(len1,len2, s1, s2):
 
 class cntans:
     def Fdans(self, aimstr):
-        Maxnum = 0.4
+        Maxnum = 0.6
         ans = list()
         for line in open("ans.txt"):
             nownum = 0
             tstr = line.strip('\n')
             tstr = tstr.split('-')
             length = len(tstr[0])
-            cnlength = (len(tstr[0].encode())-len(tstr[0]))//2
-            cnlength2 = (len(aimstr.encode())-len(aimstr))//2
+            length2 = len(aimstr)
+            # cnlength = (len(tstr[0].encode())-len(tstr[0]))//2
+            # cnlength2 = (len(aimstr.encode())-len(aimstr))//2
             j = 0
+            begin = 0
             for i in aimstr:
+                j = begin
                 if j >= length:
                     break
                 while i != tstr[0][j]:
@@ -72,11 +75,12 @@ class cntans:
                         break
                 if j < length and i == tstr[0][j]:
                     nownum += 1
-            if cnlength == 0:
+                    begin = j
+            if length == 0:
                 value = -100
             else:
-                value = nownum/cnlength
-            if value >= Maxnum and abs(cnlength - cnlength2) < 4:
+                value = nownum/length
+            if value >= Maxnum and abs(length - length2) < 6:
                 ans.append(tstr[1])
         if len(ans):
             return random.choice(ans)
@@ -111,13 +115,14 @@ class MainHandler(cqplus.CQPlusHandler):
             b = params['msg']
             len1 = len(a)
             len2 = len(b)
-            if strpp(len2, len1, b, a):
+            if strpp(len2, len1, b, a):      # 如果被@ 不学习@部分的文字
                 b = strdel(len2, len1, b, a)
+            tempb = strdel(len(b), 1, b, ' ')  #剔除空格提高准确度
             solve = cntans()
-            ans = solve.Fdans(b)
+            ans = solve.Fdans(tempb)#剔除空格的句子仅用于计算回复
             if solve.judge():
                 image = "CQ:image"
-                if not strpp(len(params['msg']), 8, params['msg'], image):
+                if not strpp(len(params['msg']), 8, b, image):
                     solve.write(b, 1)
                     solve.write(ans, 2)
             else:
