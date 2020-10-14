@@ -131,25 +131,3 @@ class MainHandler(cqplus.CQPlusHandler):
         if event == "on_private_msg":
             self.api.send_private_msg(3246327557, "来自"+' '+str(params['from_qq'])+"的消息："+params['msg'])
             
-
-
-
-
-            """
-            length = len(params['msg'])
-            # self.api.send_group_msg(params['from_group'], "收到了")  
-            if strpp(length, length2, params['msg'], name): 
-                # self.api.send_group_msg(params['from_group'], params['from_group']) 用于获取群号
-                image = "CQ:image"
-                if strpp(length, 8, params['msg'], image):
-                    self.api.send_group_msg(params['from_group'], "发你妈的图，老子看不到")    
-                else:
-                    msg = strdel(length, length2, params['msg'], name)
-                    self.api.send_group_msg(params['from_group'], msg)    
-                # self.api.send_group_msg(params['from_group'], params['msg'][i])
-                # msg = '[CQ:at,qq=' + str(params['from_qq']) + ']' + params['msg']
-                # self.api.send_group_msg(params['from_group'], msg)
-
-
-                
-            """
